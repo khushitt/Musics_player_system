@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Music Player</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- Main Music Player -->
+    <div class="music-player">
+
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <header>
+
+            <h1>🎵 My Music</h1>
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search songs..."
+                onkeyup="searchSong()"
+            >
+
+        </header>
+
+
+
+        <!-- =========================
+             NOW PLAYING
+        ========================== -->
+
+        <section class="now-playing">
+
+
+            <!-- Album Image -->
+            <div class="album-art">
+                🎵
+            </div>
+
+
+            <!-- Song Information -->
+
+            <h2 id="song-title">
+                Song Name
+            </h2>
+
+            <p id="artist">
+                Artist
+            </p>
+
+
+
+            <!-- =========================
+                 PROGRESS BAR
+            ========================== -->
+
+            <input
+                type="range"
+                id="progress"
+                value="0"
+                min="0"
+                max="100"
+            >
+
+
+            <div class="time">
+
+                <span id="current-time">
+                    0:00
+                </span>
+
+                <span id="duration">
+                    0:00
+                </span>
+
+            </div>
+
+
+
+            <!-- =========================
+                 MUSIC CONTROLS
+            ========================== -->
+
+            <div class="controls">
+
+
+                <!-- Previous -->
+                <button
+                    onclick="previousSong()"
+                    title="Previous Song">
+                    ⏮
+                </button>
+
+
+                <!-- Replay -->
+                <button
+                    onclick="replaySong()"
+                    title="Replay">
+                    🔄
+                </button>
+
+
+                <!-- Play / Pause -->
+                <button
+                    id="play-button"
+                    onclick="playPause()"
+                    title="Play/Pause">
+                    ▶
+                </button>
+
+
+                <!-- Next -->
+                <button
+                    onclick="nextSong()"
+                    title="Next Song">
+                    ⏭
+                </button>
+
+
+                <!-- Shuffle -->
+                <button
+                    onclick="toggleShuffle()"
+                    title="Shuffle">
+                    🔀
+                </button>
+
+            </div>
+
+
+
+            <!-- =========================
+                 REPEAT
+            ========================== -->
+
+            <button
+                class="repeat-btn"
+                id="repeat-button"
+                onclick="toggleRepeat()">
+
+                🔁 Repeat: OFF
+
+            </button>
+
+
+
+            <!-- =========================
+                 VOLUME
+            ========================== -->
+
+            <div class="volume">
+
+                <span>🔊</span>
+
+                <input
+                    type="range"
+                    id="volume"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="1"
+                >
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             PLAYLIST
+        ========================== -->
+
+        <section class="playlist">
+
+            <h2>🎶 Playlist</h2>
+
+            <!-- Songs will be added
+                 automatically by JavaScript -->
+
+            <div id="song-list"></div>
+
+        </section>
+
+
+
+        <!-- =========================
+             RECENTLY PLAYED
+        ========================== -->
+
+        <section class="history">
+
+            <h2>🕐 Recently Played</h2>
+
+            <div id="history-list">
+
+                No songs played yet.
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         AUDIO PLAYER
+    ========================== -->
+
+    <audio id="audio"></audio>
+
+
+
+    <!-- JavaScript File -->
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+</body>
+
+</html>
+
